@@ -2,10 +2,9 @@
 
 @import 'modern-normalize';
 
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 @theme {
   --font-sans: "Kanit", sans-serif;
+  --font-mono: 'Inter', sans-serif;
   
   --color-black: #252525;
   --color-purple: #6C63FF;
@@ -13,10 +12,11 @@
   --color-white: #F7F7F7;
   --color-gray: #CDCDCD;
   --color-red: #E50000;
+  --color-input: #C3C1E5;
 }
 
 button, a {
-  cursor: url('./assets/cursor.webp'), pointer;
+  cursor: url('./assets/cursor.webp') 15 15, pointer;
 }
 
 html,
@@ -95,4 +95,10 @@ main {
 
 footer {
   margin-top: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
