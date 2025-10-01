@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import CustomField from "./CustomField";
 
 const validationSchema = Yup.object().shape({
-  search: Yup.string().trim().min(3, "Enter at least 3 characters"),
+  search: Yup.string().trim(),
 });
 
 export default function SearchField({ value, onSubmit, setSearch }) {

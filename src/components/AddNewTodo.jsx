@@ -23,7 +23,7 @@ export default function AddNewTodo() {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="rounded-[100%] p-3.5 bg-purple hover:shadow-[0_0_4px_0_var(--color-purple)] border-2 border-purple hover:bg-dark-purple absolute right-8  bottom-[-80px] transition duration-300 ease-in"
+        className="rounded-[100%] p-3.5 bg-purple hover:shadow-[0_0_4px_0_var(--color-purple)] border-2 border-purple hover:bg-dark-purple absolute right-8  bottom-5 transition duration-300 ease-in"
       >
         <svg className=" fill-white" width="24" height="24">
           <use href="/icons.svg#icon-plus"></use>
