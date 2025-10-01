@@ -15,8 +15,8 @@
   --color-input: #C3C1E5;
 }
 
-button, a {
-  cursor: url('./assets/cursor.webp') 15 15, pointer;
+button, a, input {
+  cursor: url('/cursor.webp') 15 15, pointer !important;
 }
 
 html,

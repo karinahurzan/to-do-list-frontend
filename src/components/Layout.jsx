@@ -1,21 +1,20 @@
 import { Suspense } from "react";
-// import { useSelector } from "react-redux";
-// import Loader from "../Loader/Loader";
-// import { selectAuthIsLoading } from "../../redux/auth/selectors";
+import { selectIsLoading } from "../redux/todos/selectors";
+import { useSelector } from "react-redux";
+import Loader from "./Loader";
 
 const Layout = ({ children }) => {
-  //   const isUserLoading = useSelector(selectAuthIsLoading);
+  const isLoading = useSelector(selectIsLoading);
 
   return (
     <>
-      <section className="py-10 min-h-full md:py-15 xl:py-20">
-        <div className="max-w-sm mx-auto px-4 md:max-w-3xl md:px-8 xl:max-w-7xl xl:px-27">
-          {/* {isUserLoading ? (
+      <section className="py-4 h-full md:py-7 xl:py-10 ">
+        <div className="max-w-sm relative mx-auto px-4 md:max-w-3xl md:px-8 xl:max-w-7xl xl:px-27">
+          {isLoading ? (
             <Loader />
           ) : (
             <Suspense fallback={<Loader />}>{children}</Suspense>
-          )} */}
-          {children}
+          )}
         </div>
       </section>
     </>

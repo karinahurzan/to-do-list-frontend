@@ -1,25 +1,51 @@
 import SearchField from "./SearchField";
 import SelectChoice from "./SelectChoice";
+import { useEffect, useState } from "react";
 
-export default function Filters() {
+export default function Filters({ filters, onChangeFilters, setSearch }) {
+  const [localFilters, setLocalFilters] = useState({
+    statusType: filters.statusType || "",
+    sortOrder: filters.sortOrder || "",
+  });
+
+  useEffect(() => {
+    setLocalFilters({
+      statusType: filters.statusType || "",
+      sortOrder: filters.sortOrder || "",
+    });
+  }, [filters]);
+
+  console.log(localFilters);
+
   return (
     <div className="flex flex-col gap-3 justify-center md:flex-row ">
-      <SearchField />
+      <SearchField setSearch={setSearch} />
       <div className="flex flex-row gap-3 justify-between w-full">
         <SelectChoice
-          placeholder="Choose"
+          placeholder={filters.statusType}
+          value={filters.statusType}
+          onChange={(selected) => {
+            const updated = { ...localFilters, statusType: selected.value };
+            setLocalFilters(updated);
+            onChangeFilters(updated);
+          }}
           options={[
-            { value: "chocolate", label: "Chocolate" },
-            { value: "strawberry", label: "Strawberry" },
-            { value: "vanilla", label: "Vanilla" },
+            { value: "all", label: "all" },
+            { value: "done", label: "done" },
+            { value: "undone", label: "undone" },
           ]}
         />
         <SelectChoice
-          placeholder="Choose"
+          placeholder="Priority"
+          onChange={(selected) => {
+            const updated = { ...localFilters, sortOrder: selected.value };
+            setLocalFilters(updated);
+            onChangeFilters(updated);
+          }}
+          value={filters.sortOrder}
           options={[
-            { value: "chocolate", label: "Chocolate" },
-            { value: "strawberry", label: "Strawberry" },
-            { value: "vanilla", label: "Vanilla" },
+            { value: "asc", label: "From high to low" },
+            { value: "desc", label: "From low to high" },
           ]}
         />
       </div>
