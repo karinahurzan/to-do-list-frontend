@@ -10,7 +10,7 @@ export default function SelectChoice({
     <div className="flex-1">
       <Select
         id="brands"
-        placeholder={placeholder}
+        placeholder={placeholder || value}
         options={options}
         value={value}
         onChange={onChange}
