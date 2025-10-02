@@ -61,8 +61,7 @@ This frontend works with the backend:
 
 ```javascript
 import axios from "axios";
-
-const api = import.meta.env.VITE_API_URL;
+import { api } from "../../api/axios";
 
 export const fetchTodos = async () => {
   const { data } = await axios.get(`${api}/todos`);
