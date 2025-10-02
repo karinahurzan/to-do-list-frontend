@@ -1,16 +1,84 @@
-# React + Vite
+# To-Do List Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend** part of the To-Do List application. It provides a user interface to create, view, edit, and delete tasks. The frontend is built with **React**, **Redux Toolkit**, and **Formik**.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Interactive UI for managing to-do tasks
+- Create, edit, and delete to-dos
+- Filtering and searching tasks
+- Sorting by priority and status
+- Form validation using **Formik + Yup**
+- State management with **Redux Toolkit**
+- Responsive design with **TailwindCSS**
 
-## React Compiler
+## 🛠 Technologies Used
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **React** – UI library
+- **Redux Toolkit** – state management
+- **React Router** – routing
+- **Formik + Yup** – forms and validation
+- **TailwindCSS** – styling
+- **Axios / Fetch** – API requests
+- **Vite** – fast build tool
 
-## Expanding the ESLint configuration
+## 🚀 Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the repository:
+
+```bash
+git clone git@github.com:karinahurzan/to-do-list-frontend.git
+cd to-do-list-frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The frontend will be available at http://localhost:5173/
+
+## 🔗 Backend
+
+This frontend works with the backend:  
+👉 [to-do-list-nce4.onrender.com](https://to-do-list-nce4.onrender.com/)  
+👉 Backend repository: [karinahurzan/to-do-list](https://github.com/karinahurzan/to-do-list)
+
+## 📌 Main Page
+
+- **Todos Page** – view all tasks
+- **Add/Edit Todo Modal** – create or edit tasks
+- **Filters & Search** – search, filter, and sorting
+
+## 📝 Example API Usage
+
+```javascript
+import axios from "axios";
+
+const api = import.meta.env.VITE_API_URL;
+
+export const fetchTodos = async () => {
+  const { data } = await axios.get(`${api}/todos`);
+  return data;
+};
+```
+
+## 🤝 Contributing
+
+Please open issues or submit pull requests for improvements or bug fixes.
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+👩‍💻 Author: [Karina Hurzan](https://github.com/karinahurzan)  
+💼 LinkedIn: [Karina Hurzan](https://www.linkedin.com/in/karina-hurzan/)
