@@ -43,7 +43,11 @@ export default function Todo({ text, priority, id, status }) {
         onPointerDown={() => setIsHovered(true)}
         onPointerMove={() => setIsHovered(true)}
         onPointerLeave={() => {
-          setTimeout(() => setIsHovered(false), 3000);
+          if (window.matchMedia("(max-width: 770px)").matches) {
+            setTimeout(() => setIsHovered(false), 3000);
+          } else {
+            setIsHovered(false);
+          }
         }}
       >
         <div className="flex justify-center items-center gap-2.5 md:gap-6 xl:gap-10">
