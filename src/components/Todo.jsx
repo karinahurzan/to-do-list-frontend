@@ -13,7 +13,7 @@ export default function Todo({ text, priority, id, status }) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [checked, setChecked] = useState(status === "done");
-  const [isHovered, setIsHovered] = useState(false); // для кнопок при ховері
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     setChecked(status === "done");
@@ -33,7 +33,6 @@ export default function Todo({ text, priority, id, status }) {
     const newStatus = !checked ? "done" : "undone";
     setChecked(!checked);
     await dispatch(updateTodo({ todoId: id, payload: { status: newStatus } }));
-    dispatch(fetchTodos(filters));
   };
 
   return (
@@ -43,7 +42,9 @@ export default function Todo({ text, priority, id, status }) {
         className="flex py-2 md:py-3 xl:py-4 justify-between items-center not-last:border-b not-last:border-b-purple"
         onPointerDown={() => setIsHovered(true)}
         onPointerMove={() => setIsHovered(true)}
-        onPointerLeave={() => setIsHovered(false)}
+        onPointerLeave={() => {
+          setTimeout(() => setIsHovered(false), 3000);
+        }}
       >
         <div className="flex justify-center items-center gap-2.5 md:gap-6 xl:gap-10">
           <Checkbox
@@ -74,7 +75,7 @@ export default function Todo({ text, priority, id, status }) {
             </p>
             <p
               style={{ color: checked && "var(--color-gray)" }}
-              className="font-medium text-black text-[15px] md:text-xl max-w-25 xs:max-w-full md:max-w-full uppercase truncate"
+              className="font-medium text-black text-[15px] md:text-xl max-w-25 container-sm:max-w-full md:max-w-full uppercase truncate"
             >
               {text}
             </p>
@@ -89,7 +90,7 @@ export default function Todo({ text, priority, id, status }) {
             onClick={() => setIsModalOpen(true)}
             className="flex justify-center items-center"
           >
-            <svg className="w-5 h-5 lg:w-7 ld:h-7 stroke-gray fill-none hover:stroke-purple transition duration-300 ease-in">
+            <svg className="w-5 h-5 stroke-gray fill-none hover:stroke-purple transition duration-300 ease-in">
               <use href="/icons.svg#icon-pencil"></use>
             </svg>
           </button>
@@ -98,7 +99,7 @@ export default function Todo({ text, priority, id, status }) {
             className="flex justify-center items-center"
           >
             <svg
-              className="w-5 h-5 lg:w-9 ld:h-9 stroke-gray hover:stroke-red transition duration-300 ease-in"
+              className="w-5 h-5 stroke-gray hover:stroke-red transition duration-300 ease-in"
               width="18"
               height="18"
               viewBox="0 0 18 18"

@@ -13,6 +13,10 @@
   --color-gray: #CDCDCD;
   --color-red: #E50000;
   --color-input: #C3C1E5;
+  
+  --container-sm: 320px;
+  
+  --breakpoint-container-sm: 320px;
 }
 
 button, a, input {

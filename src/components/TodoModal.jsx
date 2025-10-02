@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
 import { useEffect } from "react";
@@ -51,14 +51,17 @@ export default function TodoModal({
         </div>
 
         <Formik
-          initialValues={{ todo: text, priority: priority }}
+          initialValues={{
+            todo: text ?? "",
+            priority: priority ?? "",
+          }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
             handleSubmit(values);
             setSubmitting(false);
           }}
         >
-          {() => (
+          {({ values }) => (
             <Form className="">
               <div className="flex mb-20 justify-center items-center gap-2.5 flex-nowrap flex-col">
                 <Field name="todo">
@@ -66,11 +69,12 @@ export default function TodoModal({
                     <input
                       {...field}
                       type="text"
-                      placeholder="Input your note..."
+                      placeholder="Input your note...*"
                       className="w-full max-h-10 border-1 border-[var(--color-purple)] outline-none py-3 px-4 rounded-[5px] !font-mono font-medium text-base placeholder:text-input text-purple hover:border-[rgba(108,99,255,0.4)]  hover:shadow-[0_0_1px_rgba(108,99,255,0.6)] transition duration-300 ease-in"
                     />
                   )}
                 </Field>
+                <ErrorMessage name="todo" />
                 <Field name="priority">
                   {({ field }) => (
                     <input
@@ -78,7 +82,7 @@ export default function TodoModal({
                       type="number"
                       min={1}
                       max={10}
-                      placeholder="Input your note..."
+                      placeholder="Input your note's priority..."
                       className="w-full max-h-10 border-1 border-[var(--color-purple)] outline-none py-3 px-4 rounded-[5px] !font-mono font-medium text-base placeholder:text-input text-purple hover:border-[rgba(108,99,255,0.4)]  hover:shadow-[0_0_1px_rgba(108,99,255,0.6)] transition duration-300 ease-in"
                     />
                   )}
@@ -93,8 +97,9 @@ export default function TodoModal({
                   Cancel
                 </button>
                 <button
+                  disabled={values.todo.length < 3}
                   type="submit"
-                  className="bg-purple rounded-[5px] py-2.5 px-6 font-medium text-lg !uppercase text-white"
+                  className="disabled:bg-[rgba(108,99,255,0.2)] enabled:bg-purple rounded-[5px] py-2.5 px-6 font-medium text-lg !uppercase text-white"
                 >
                   Apply
                 </button>

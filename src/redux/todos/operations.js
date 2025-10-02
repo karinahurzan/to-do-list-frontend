@@ -21,8 +21,12 @@ export const fetchTodos = createAsyncThunk(
 
 export const createTodo = createAsyncThunk(
   "todos/create",
-  async (payload, { rejectWithValue }) => {
+  async (values, { rejectWithValue }) => {
     try {
+      const payload = {
+        todo: values.todo,
+        ...(values.priority ? { priority: values.priority } : {}),
+      };
       const { data } = await api.post("/todos", payload);
       console.log(data);
 
