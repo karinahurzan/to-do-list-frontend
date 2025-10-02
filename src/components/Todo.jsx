@@ -79,8 +79,9 @@ export default function Todo({ text, priority, id, status }) {
             </p>
             <p
               style={{ color: checked && "var(--color-gray)" }}
-              className="font-medium text-black text-[15px] md:text-xl max-w-25 container-sm:max-w-full md:max-w-full uppercase truncate"
+              className="font-medium text-black text-[15px] md:text-xl  max-w-25 container-sm:max-w-45 md:max-w-140 xl:max-w-230 uppercase truncate"
             >
+              {/* max-w-25 container-sm:max-w-full md:max-w-full */}
               {text}
             </p>
           </div>
