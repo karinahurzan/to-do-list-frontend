@@ -15,8 +15,6 @@ export default function Filters({ filters, onChangeFilters, setSearch }) {
     });
   }, [filters]);
 
-  console.log(localFilters);
-
   return (
     <div className="flex flex-col gap-3 justify-center md:flex-row ">
       <SearchField setSearch={setSearch} />

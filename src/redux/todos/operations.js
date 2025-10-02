@@ -9,7 +9,6 @@ export const fetchTodos = createAsyncThunk(
   ) => {
     try {
       const params = { statusType, sortBy, sortOrder };
-      console.log(params);
 
       const { data } = await api.get("/todos", { params });
       return data;
@@ -28,7 +27,6 @@ export const createTodo = createAsyncThunk(
         ...(values.priority ? { priority: values.priority } : {}),
       };
       const { data } = await api.post("/todos", payload);
-      console.log(data);
 
       return data;
     } catch (err) {

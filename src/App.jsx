@@ -5,17 +5,14 @@ import Layout from "./components/Layout";
 import Todos from "./components/Todos";
 import { fetchTodos } from "./redux/todos/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilters, selectTodos } from "./redux/todos/selectors";
+import { selectFilters } from "./redux/todos/selectors";
 import AddNewTodo from "./components/AddNewTodo";
 import { setFilters } from "./redux/todos/todosSlice";
 
 function App() {
   const dispatch = useDispatch();
 
-  const todos = useSelector(selectTodos);
   const filters = useSelector(selectFilters);
-  console.log(todos);
-  console.log(filters);
 
   useEffect(() => {
     dispatch(fetchTodos(filters));
